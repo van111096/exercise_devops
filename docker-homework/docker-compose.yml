@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: book_api
+    ports:
+      - 8090:8080
+    environment:
+      - POSTGRESQL_HOST=postgresql
+      - POSTGRESQL_PORT=5432
+      - POSTGRESQL_PASSWORD=root123
+      - POSTGRESQL_DATABASE=registry
+    restart: on-failure
+    depends_on:
+      - postgresql
+    networks:
+      - fullstack
+
+  postgresql:
+    image: postgres:latest
+    container_name: db_postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=root123
+      - POSTGRES_DB=registry
+      - POSTGRES_USER=postgres
+    volumes:
+      - ./config/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_postgres:/var/lib/postgresql/data
+    networks:
+      - fullstack
+
+volumes:
+  db_postgres:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  fullstack:
+    driver: bridge
+
+

@@ -1,0 +1,136 @@
+anhvan@anhvan-X550LD:~/Documents/docker/exercise_devops/docker-homework$ sudo docker-compose up --build
+[sudo] password for anhvan:
+Building app
+Sending build context to Docker daemon  273.4kB
+Step 1/14 : FROM golang:alpine as bookApi
+ ---> 7762f5dece68
+Step 2/14 : LABEL maintainer="Hoang ANH VAN <hoanganhvan1996@gmail.com>"
+ ---> Using cache
+ ---> 2b665824644c
+Step 3/14 : WORKDIR /app
+ ---> Using cache
+ ---> 338a81e12c84
+Step 4/14 : COPY go.mod .
+ ---> Using cache
+ ---> 67f11f0ffdbb
+Step 5/14 : COPY go.sum .
+ ---> Using cache
+ ---> 6f4f4a865e27
+Step 6/14 : RUN go mod download
+ ---> Using cache
+ ---> a14148ffb4c7
+Step 7/14 : COPY . .
+ ---> Using cache
+ ---> 200f9bad7608
+Step 8/14 : RUN go build -o main .
+ ---> Using cache
+ ---> c8034f9cbc0c
+Step 9/14 : FROM alpine:latest
+ ---> d4ff818577bc
+Step 10/14 : WORKDIR /app
+ ---> Using cache
+ ---> afc9eb2f7ffc
+Step 11/14 : COPY --from=bookApi /app/main .
+ ---> Using cache
+ ---> 2bf64b5252ad
+Step 12/14 : COPY ./config/app/.env .
+ ---> Using cache
+ ---> 6e3d596125ef
+Step 13/14 : COPY ./config/app/app.conf .
+ ---> Using cache
+ ---> 64adff5bcbf8
+Step 14/14 : CMD ["./main"]
+ ---> Using cache
+ ---> 2508c2b0d770
+Successfully built 2508c2b0d770
+Successfully tagged docker-homework_app:latest
+db_postgres is up-to-date
+book_api is up-to-date
+Attaching to db_postgres, book_api
+book_api      | [ORM]2021/07/25 10:01:57 Detect DB timezone: Etc/UTC unknown time zone Etc/UTC
+book_api      | Register database completed
+book_api      | 2021/07/25 10:01:57.111 [I]  http server Running on http://:8080
+book_api      | 2021/07/25 10:22:20 failed to initialize database: register db Ping `default`, dial tcp 172.28.0.2:5432: connect: connection refused
+book_api      | [ORM]2021/07/25 10:22:20 register db Ping `default`, dial tcp 172.28.0.2:5432: connect: connection refused
+book_api      | [ORM]2021/07/25 10:22:26 register db Ping `default`, pq: the database system is starting up
+book_api      | 2021/07/25 10:22:26 failed to initialize database: register db Ping `default`, pq: the database system is starting up
+book_api      | [ORM]2021/07/25 10:22:36 register db Ping `default`, pq: the database system is starting up
+book_api      | 2021/07/25 10:22:36 failed to initialize database: register db Ping `default`, pq: the database system is starting up
+book_api      | [ORM]2021/07/25 10:22:43 Detect DB timezone: Etc/UTC unknown time zone Etc/UTC
+book_api      | Register database completed
+book_api      | 2021/07/25 10:22:43.271 [I]  http server Running on http://:8080
+book_api      | [ORM]2021/07/25 10:23:24 Detect DB timezone: Etc/UTC unknown time zone Etc/UTC
+book_api      | Register database completed
+book_api      | 2021/07/25 10:23:24.521 [I]  http server Running on http://:8080
+db_postgres   | The files belonging to this database system will be owned by user "postgres".
+db_postgres   | This user must also own the server process.
+db_postgres   |
+db_postgres   | The database cluster will be initialized with locale "en_US.utf8".
+db_postgres   | The default database encoding has accordingly been set to "UTF8".
+db_postgres   | The default text search configuration will be set to "english".
+db_postgres   |
+db_postgres   | Data page checksums are disabled.
+db_postgres   |
+db_postgres   | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+db_postgres   | creating subdirectories ... ok
+db_postgres   | selecting dynamic shared memory implementation ... posix
+db_postgres   | selecting default max_connections ... 100
+db_postgres   | selecting default shared_buffers ... 128MB
+db_postgres   | selecting default time zone ... Etc/UTC
+db_postgres   | creating configuration files ... ok
+db_postgres   | running bootstrap script ... ok
+db_postgres   | performing post-bootstrap initialization ... ok
+db_postgres   | syncing data to disk ... ok
+db_postgres   |
+db_postgres   |
+db_postgres   | Success. You can now start the database server using:
+db_postgres   |
+db_postgres   |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+db_postgres   |
+db_postgres   | initdb: warning: enabling "trust" authentication for local connections
+db_postgres   | You can change this by editing pg_hba.conf or using the option -A, or
+db_postgres   | --auth-local and --auth-host, the next time you run initdb.
+db_postgres   | waiting for server to start....2021-07-25 10:00:51.235 UTC [48] LOG:  starting PostgreSQL 13.3 (Debian 13.3-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+db_postgres   | 2021-07-25 10:00:51.337 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db_postgres   | 2021-07-25 10:00:51.919 UTC [49] LOG:  database system was shut down at 2021-07-25 10:00:14 UTC
+db_postgres   | .2021-07-25 10:00:52.056 UTC [48] LOG:  database system is ready to accept connections
+db_postgres   |  done
+db_postgres   | server started
+db_postgres   | CREATE DATABASE
+db_postgres   |
+db_postgres   |
+db_postgres   | /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/init.sql
+db_postgres   | CREATE TABLE
+db_postgres   |
+db_postgres   |
+db_postgres   | 2021-07-25 10:01:08.237 UTC [48] LOG:  received fast shutdown request
+db_postgres   | waiting for server to shut down....2021-07-25 10:01:08.284 UTC [48] LOG:  aborting any active transactions
+db_postgres   | 2021-07-25 10:01:08.288 UTC [48] LOG:  background worker "logical replication launcher" (PID 55) exited with exit code 1
+db_postgres   | 2021-07-25 10:01:08.288 UTC [50] LOG:  shutting down
+db_postgres   | .2021-07-25 10:01:09.609 UTC [48] LOG:  database system is shut down
+db_postgres   |  done
+db_postgres   | server stopped
+db_postgres   |
+db_postgres   | PostgreSQL init process complete; ready for start up.
+db_postgres   |
+db_postgres   | 2021-07-25 10:01:10.982 UTC [1] LOG:  starting PostgreSQL 13.3 (Debian 13.3-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+db_postgres   | 2021-07-25 10:01:10.983 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db_postgres   | 2021-07-25 10:01:10.983 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db_postgres   | 2021-07-25 10:01:11.574 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db_postgres   | 2021-07-25 10:01:12.732 UTC [85] LOG:  database system was shut down at 2021-07-25 10:01:09 UTC
+db_postgres   | 2021-07-25 10:01:13.191 UTC [1] LOG:  database system is ready to accept connections
+db_postgres   |
+db_postgres   | PostgreSQL Database directory appears to contain a database; Skipping initialization
+db_postgres   |
+db_postgres   | 2021-07-25 10:22:21.094 UTC [1] LOG:  starting PostgreSQL 13.3 (Debian 13.3-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+db_postgres   | 2021-07-25 10:22:21.094 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db_postgres   | 2021-07-25 10:22:21.094 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db_postgres   | 2021-07-25 10:22:21.408 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db_postgres   | 2021-07-25 10:22:21.710 UTC [27] LOG:  database system was interrupted; last known up at 2021-07-25 10:06:14 UTC
+db_postgres   | 2021-07-25 10:22:26.015 UTC [28] FATAL:  the database system is starting up
+db_postgres   | 2021-07-25 10:22:33.526 UTC [27] LOG:  database system was not properly shut down; automatic recovery in progress
+db_postgres   | 2021-07-25 10:22:33.698 UTC [27] LOG:  redo starts at 0/15E7A78
+db_postgres   | 2021-07-25 10:22:33.698 UTC [27] LOG:  invalid record length at 0/15E7B60: wanted 24, got 0
+db_postgres   | 2021-07-25 10:22:33.698 UTC [27] LOG:  redo done at 0/15E7B28
+db_postgres   | 2021-07-25 10:22:36.203 UTC [29] FATAL:  the database system is starting up
+db_postgres   | 2021-07-25 10:22:37.327 UTC [1] LOG:  database system is ready to accept connections
