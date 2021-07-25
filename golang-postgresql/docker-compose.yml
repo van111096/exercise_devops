@@ -1,0 +1,40 @@
+version: '3.6'
+
+services:
+  app:
+    image: thuongnn1997/todo-app:latest
+    container_name: golang_api
+    ports:
+      - 8092:8080
+    environment:
+      - POSTGRESQL_HOST=postgresql
+      - POSTGRESQL_PORT=5432
+      - POSTGRESQL_PASSWORD=root123
+      - POSTGRESQL_DATABASE=registry
+    restart: on-failure
+    depends_on:
+      - postgresql
+    networks:
+      - todo-app
+
+  postgresql:
+    image: thuongnn1997/todo-app-db:latest
+    container_name: db_postgresql
+    environment:
+      - POSTGRES_PASSWORD=root123
+      - POSTGRES_DB=registry
+      - POSTGRES_USER=postgres
+    volumes:
+      - db_postgres_golang:/var/lib/postgresql/data
+    networks:
+      - todo-app
+
+volumes:
+  db_postgres_golang:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  todo-app:
+    driver: bridge
+
+

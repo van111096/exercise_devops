@@ -1,0 +1,17 @@
+anhvan@anhvan-X550LD:~/Documents/docker/exercise_devops/golang-postgresql$ sudo docker-compose up --build
+Creating network "golang-postgresql_todo-app" with driver "bridge"
+Creating db_postgresql ... done
+Attaching to db_postgresql, golang_api
+db_postgresql |
+db_postgresql | PostgreSQL Database directory appears to contain a database; Skipping initialization
+golang_api    | [ORM]2021/07/25 16:12:32 Detect DB timezone: Etc/UTC unknown time zone Etc/UTC
+golang_api    | Register database completed
+golang_api    | 2021/07/25 16:12:32.129 [I]  http server Running on http://:8080
+db_postgresql |
+db_postgresql | 2021-07-25 16:12:27.529 UTC [1] LOG:  starting PostgreSQL 13.3 (Debian 13.3-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+db_postgresql | 2021-07-25 16:12:27.529 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db_postgresql | 2021-07-25 16:12:27.529 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db_postgresql | 2021-07-25 16:12:27.857 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db_postgresql | 2021-07-25 16:12:28.406 UTC [26] LOG:  database system was shut down at 2021-07-25 16:12:09 UTC
+db_postgresql | 2021-07-25 16:12:28.783 UTC [1] LOG:  database system is ready to accept connections
+
