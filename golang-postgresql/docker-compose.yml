@@ -16,7 +16,6 @@ services:
       - postgresql
     networks:
       - todo-app
-
   postgresql:
     image: thuongnn1997/todo-app-db:latest
     container_name: db_postgresql
@@ -25,16 +24,13 @@ services:
       - POSTGRES_DB=registry
       - POSTGRES_USER=postgres
     volumes:
-      - db_postgres_golang:/var/lib/postgresql/data
+      - "/var/lib/postgresql/data:/var/lib/postgresql/data"
     networks:
       - todo-app
 
-volumes:
-  db_postgres_golang:
-
-# Networks to be created to facilitate communication between containers
 networks:
   todo-app:
     driver: bridge
 
-
+volumes:
+  db_postgres_golang:
