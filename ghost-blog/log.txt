@@ -1,0 +1,51 @@
+anhvan@anhvan-X550LD:~/Documents/docker/exercise_devops/blog$ sudo docker-compose up --build
+db_ghost is up-to-date
+Starting ghost_api ... done
+Attaching to db_ghost, ghost_api
+db_ghost | 2021-07-26 15:12:33+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.34-1debian10 started.
+db_ghost | 2021-07-26 15:12:33+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+db_ghost | 2021-07-26 15:12:33+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.34-1debian10 started.
+db_ghost | 2021-07-26T15:12:34.202009Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+db_ghost | 2021-07-26T15:12:34.203799Z 0 [Note] mysqld (mysqld 5.7.34) starting as process 1 ...
+db_ghost | 2021-07-26T15:12:34.207023Z 0 [Note] InnoDB: PUNCH HOLE support available
+db_ghost | 2021-07-26T15:12:34.207042Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+db_ghost | 2021-07-26T15:12:34.207047Z 0 [Note] InnoDB: Uses event mutexes
+db_ghost | 2021-07-26T15:12:34.207052Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+db_ghost | 2021-07-26T15:12:34.207067Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db_ghost | 2021-07-26T15:12:34.207071Z 0 [Note] InnoDB: Using Linux native AIO
+db_ghost | 2021-07-26T15:12:34.207369Z 0 [Note] InnoDB: Number of pools: 1
+db_ghost | 2021-07-26T15:12:34.207497Z 0 [Note] InnoDB: Using CPU crc32 instructions
+db_ghost | 2021-07-26T15:12:34.209267Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+db_ghost | 2021-07-26T15:12:34.220709Z 0 [Note] InnoDB: Completed initialization of buffer pool
+db_ghost | 2021-07-26T15:12:34.222937Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+db_ghost | 2021-07-26T15:12:34.284020Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+db_ghost | 2021-07-26T15:12:34.890253Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+db_ghost | 2021-07-26T15:12:34.890353Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+db_ghost | 2021-07-26T15:12:35.432462Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+db_ghost | 2021-07-26T15:12:35.433452Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+db_ghost | 2021-07-26T15:12:35.433463Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+db_ghost | 2021-07-26T15:12:35.433965Z 0 [Note] InnoDB: 5.7.34 started; log sequence number 2748407
+db_ghost | 2021-07-26T15:12:35.434121Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+db_ghost | 2021-07-26T15:12:35.434349Z 0 [Note] Plugin 'FEDERATED' is disabled.
+db_ghost | 2021-07-26T15:12:35.435834Z 0 [Note] InnoDB: Buffer pool(s) load completed at 210726 15:12:35
+db_ghost | 2021-07-26T15:12:35.440218Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+db_ghost | 2021-07-26T15:12:35.440255Z 0 [Note] Skipping generation of SSL certificates as certificate files are present in data directory.
+db_ghost | 2021-07-26T15:12:35.440896Z 0 [Warning] CA certificate ca.pem is self signed.
+db_ghost | 2021-07-26T15:12:35.440935Z 0 [Note] Skipping generation of RSA key pair as key files are present in data directory.
+db_ghost | 2021-07-26T15:12:35.441392Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+db_ghost | 2021-07-26T15:12:35.441486Z 0 [Note] IPv6 is available.
+db_ghost | 2021-07-26T15:12:35.441502Z 0 [Note]   - '::' resolves to '::';
+db_ghost | 2021-07-26T15:12:35.441525Z 0 [Note] Server socket created on IP: '::'.
+db_ghost | 2021-07-26T15:12:35.564488Z 0 [Warning] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+db_ghost | 2021-07-26T15:12:35.573206Z 0 [Note] Event Scheduler: Loaded 0 events
+db_ghost | 2021-07-26T15:12:35.573454Z 0 [Note] mysqld: ready for connections.
+db_ghost | Version: '5.7.34'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+ghost_api | [2021-07-26 15:13:30] INFO Ghost is running in production...
+ghost_api | [2021-07-26 15:13:31] INFO Your site is now available on http://localhost:2368/
+ghost_api | [2021-07-26 15:13:31] INFO Ctrl+C to shut down
+ghost_api | [2021-07-26 15:13:31] INFO Ghost server started in 0.556s
+ghost_api | [2021-07-26 15:13:31] INFO Database is in a ready state.
+ghost_api | [2021-07-26 15:13:31] INFO Ghost database ready in 0.868s
+ghost_api | [2021-07-26 15:13:34] INFO Ghost booted in 4.033s
+ghost_api | [2021-07-26 15:13:34] INFO Adding offloaded job to the queue
+ghost_api | [2021-07-26 15:13:34] INFO Scheduling job update-check at 1 51 22 * * *. Next run on: Mon Jul 26 2021 22:51:01 GMT+0000 (Coordinated Universal Time)
